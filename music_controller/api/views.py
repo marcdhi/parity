@@ -1,8 +1,12 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from rest_framework import generics 
+from .serializers import RoomSerializer
 
+# Importing the Room model
+from .models import Room
 
-# Adding all views here:
+class RoomView(generics.ListCreateAPIView):
+    # Specifying the serializer class
+    queryset = Room.objects.all()
+    serializer_class = RoomSerializer
 
-def  main(request):
-    return HttpResponse("Welcome to Music Controller API")
